@@ -56,11 +56,11 @@ CDKey 详情页上其实有**三个**价格，取错就是白亏钱：
 - 搜不到的游戏标 `not_found`，不提交、不瞎挂
 - 重复 key 自动识别并跳过，继续下一条
 - 单条失败不影响整批，状态逐条落盘
-- 仓库自带 **推送前自检** `scripts/check_no_secrets.py`：扫描 `accessToken`、真实 CDKey、
+- 仓库自带 **推送前自检** `check_no_secrets.py`：扫描 `accessToken`、真实 CDKey、
   带用户名的绝对路径，配合 `.gitignore` 挡住浏览器 profile（内含登录 cookie），防止误提交
 
 ```powershell
-python scripts/check_no_secrets.py     # 干净则 exit 0；发现可疑内容 exit 1
+python check_no_secrets.py     # 干净则 exit 0；发现可疑内容 exit 1
 ```
 
 ### 5. 不碰你的密码，也不碰验证码
@@ -92,29 +92,29 @@ cd steampy-cdk-lister
 python -m pip install -r requirements.txt
 
 # 1) 起浏览器驱动（长驻，会弹出 Edge 窗口）
-python scripts/driver.py --port 8899
+python driver.py --port 8899
 
 # 2) 另开一个终端：登录（人工，工具只负责等你登完）
-python scripts/steampy.py login --wait 300
+python steampy.py login --wait 300
 
 # 3) 确认账号与会话有效
-python scripts/steampy.py whoami
+python steampy.py whoami
 #    → id + 昵称 + listSelf 可见挂单数
 
 # 4) 搜条目，拿 gameId
-python scripts/steampy.py search --q "Monster Hunter Rise Deluxe Kit"
+python steampy.py search --q "Monster Hunter Rise Deluxe Kit"
 
 # 5) 写清单 → 解析定价（不提交）
-copy examples\items.example.json items.json
-python scripts/steampy.py plan --items items.json --out plan.json
+copy items.example.json items.json
+python steampy.py plan --items items.json --out plan.json
 
 # 6) 先 dry-run，确认无误再真提交
-python scripts/steampy.py list --plan plan.json
-python scripts/steampy.py list --plan plan.json --execute
+python steampy.py list --plan plan.json
+python steampy.py list --plan plan.json --execute
 
 # 7) 核对 + 出表
-python scripts/steampy.py verify --plan plan.json --results results.json
-python scripts/steampy.py report --plan plan.json --results results.json --out 上架结果.xlsx
+python steampy.py verify --plan plan.json --results results.json
+python steampy.py report --plan plan.json --results results.json --out 上架结果.xlsx
 ```
 
 ### 命令一览
@@ -165,7 +165,7 @@ python scripts/steampy.py report --plan plan.json --results results.json --out �
 缺了它服务端直接掐连接（浏览器里表现为 `Failed to fetch`，非常像网络故障）。
 放在已登录页面里发，cookie 和 token 天然对齐，比自己拼 header 稳。
 
-接口清单、字段同名不同义的坑、DOM 备忘都在 [`reference/api.md`](reference/api.md)。
+接口清单、字段同名不同义的坑、DOM 备忘都在 [`API.md`](API.md)。
 
 ---
 
@@ -175,7 +175,7 @@ python scripts/steampy.py report --plan plan.json --results results.json --out �
 - **单实例**：同一时间只能跑一个 driver；同账号多开会互相踢掉会话
 - **受平台限流约束**：整批耗时约 `条目数 × 11.5s`，无法更快
 - **只做上架与核对**：改价、下架、订单处理未实现（接口已知，欢迎 PR）
-- **接口非官方**：是站点自用接口，字段可能变；变了改 `scripts/js/bridge.js` 即可
+- **接口非官方**：是站点自用接口，字段可能变；变了改 `bridge.js` 即可
 
 ## 数据真实性
 

@@ -19,8 +19,8 @@ import traceback
 
 from playwright.async_api import async_playwright
 
-WORK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "work")
-WORK = os.path.abspath(WORK)
+HERE = os.path.dirname(os.path.abspath(__file__))
+WORK = os.path.join(HERE, "work")
 PROFILE = os.path.join(WORK, "edgeprofile")
 
 state = {"pw": None, "ctx": None, "pages": {}}

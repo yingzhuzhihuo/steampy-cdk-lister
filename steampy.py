@@ -39,8 +39,8 @@ except Exception:
     pass
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-JS_DIR = os.path.join(HERE, "js")
-WORK = os.path.abspath(os.path.join(HERE, "..", "work"))
+JS_DIR = HERE  # bridge.js 与本脚本同目录
+WORK = os.path.join(HERE, "work")
 DEFAULT_PORT = 8899
 MIN_GAP = 11.5  # 平台限制两次挂单间隔 10 秒，留点余量
 

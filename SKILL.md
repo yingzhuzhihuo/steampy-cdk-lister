@@ -29,11 +29,11 @@ python -m pip install -r requirements.txt   # playwright + openpyxl
 启动驱动（后台长驻，窗口会弹出来）：
 
 ```powershell
-cd scripts
+cd <项目目录>
 python driver.py --port 8899
 ```
 
-profile 存在 `scripts/../work/edgeprofile`，登录态跨次保留；掉登录时重跑 `login` 让人工登一次。
+profile 存在 `work/edgeprofile`，登录态跨次保留；掉登录时重跑 `login` 让人工登一次。
 想复用一份已有的登录态，加 `--profile "<某个已登录的 profile 目录>"` 即可免登录。
 
 ## 2. 登录（必须人工）
@@ -150,4 +150,4 @@ profile 存在 `scripts/../work/edgeprofile`，登录态跨次保留；掉登录
 - 不接触账号密码、不解除验证码、不批量下架或改价（需用户逐条确认）。
 - 用户是账号本人、key 是自有库存时才执行。
 
-接口细节见 `reference/api.md`，模板见 `work/template_items.json`。
+接口细节见 `API.md`，模板见 `items.example.json`。
