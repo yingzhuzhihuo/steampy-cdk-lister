@@ -1,0 +1,31 @@
+# 浏览器 profile（含登录 cookie / localStorage token）—— 绝对不要提交
+work/
+edgeprofile/
+**/edgeprofile/
+
+# 运行时产物
+plan.json
+results.json
+verified.json
+items.json
+*.xlsx
+*.csv
+*.log
+shot*.png
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 本地密钥
+.env
+.env.*

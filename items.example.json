@@ -1,0 +1,9 @@
+[
+  {"n": 1, "label": "星露谷物语-标准版", "key": "XXXXX-XXXXX-XXXXX", "gameId": "496138616573968"},
+  {"n": 2, "label": "泰拉瑞亚-标准版", "key": "XXXXX-XXXXX-XXXXX", "gameId": "496138616573986"},
+  {"n": 3, "label": "空洞骑士（用 query+match 解析）", "key": "XXXXX-XXXXX-XXXXX",
+   "query": "Hollow Knight", "match": "Hollow Knight"},
+  {"n": 4, "label": "某 DLC（示例：怪物猎人世界-冰原 纯 DLC）", "key": "XXXXX-XXXXX-XXXXX",
+   "gameId": "496138616574354"},
+  {"n": 5, "label": "非 Steam 商品（演示 not_found，会被跳过）", "key": "XXXXXXXXXXXXXXX"}
+]
