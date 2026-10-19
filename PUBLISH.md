@@ -4,7 +4,7 @@
 推送前**务必**先跑自检：
 
 ```powershell
-python scripts\check_no_secrets.py
+python check_no_secrets.py
 ```
 必须输出 `[OK] ... 未发现登录态 / 真实 key / 绝对用户路径` 才继续。
 `.gitignore` 已排除 `work/`（浏览器 profile 含登录 cookie）、`plan.json`、`results.json`、
@@ -74,5 +74,5 @@ Compress-Archive -Path <repo>\* `
 
 - 仓库 Description 用一句话：`Batch-list Steam CDKeys on SteamPY seller center, priced by market top price, rate-limit aware.`
 - Topics：`steampy` `cdkey` `playwright` `automation` `dsh-skill`
-- 想加 CI 就跑：`python scripts/check_no_secrets.py`（每次 push 检查是否误传凭据）
+- 想加 CI 就跑：`python check_no_secrets.py`（每次 push 检查是否误传凭据）
 - 别把 `work/` 加进仓库；如果已经提交过，用 `git filter-repo` 清历史并**立即重新登录**让旧 token 失效
