@@ -70,7 +70,8 @@ def scan(root):
 
 
 def main():
-    root = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # 脚本自己就在仓库根目录里，默认扫描它所在目录（不要往上多跳一层）
+    root = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
     findings = scan(root)
     if not findings:
         print(f"[OK] {root} 未发现登录态 / 真实 key / 绝对用户路径")

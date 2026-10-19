@@ -82,7 +82,7 @@ def main():
     a = ap.parse_args()
 
     # 1) 强制自检
-    checker = os.path.join(ROOT, "scripts", "check_no_secrets.py")
+    checker = os.path.join(ROOT, "check_no_secrets.py")
     rc = subprocess.call([sys.executable, checker, ROOT])
     if rc != 0:
         print("\n[中止] 自检未通过，先清理再上传（尤其确认 work/ 没被包含进来）。")
